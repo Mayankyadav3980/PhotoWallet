@@ -1,0 +1,25 @@
+.nav_container{
+    background-color: black;
+    color: white;
+    position: fixed;
+    top:0;
+    width: 100vw;
+    height: 50px;
+
+    /* padding: 10px 0; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.brand_name{
+    margin-left:40px ;
+}
+.search_box{
+    /* border: 1px solid red; */
+    margin-right: 40px;
+    border-radius: 20px;
+    height: 25px;
+    padding-left:10px ;
+}
