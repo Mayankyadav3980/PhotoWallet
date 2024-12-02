@@ -9,7 +9,11 @@ const InputBox = () => {
 
   const handleSubmit = async () => {
     try{
-       await addDoc(collection(db, albumName), {});
+       await addDoc(collection(db, "albums"), {
+        albumName: albumName,
+        photoList: [],
+        date: new Date()
+       });
        setAlbumName("");
       //  alert("new album created!!");
     }catch(e){
@@ -26,6 +30,7 @@ const InputBox = () => {
           className={InputBoxStyles.item1}
           onChange={(e)=> setAlbumName(e.target.value)}
           value={albumName}
+          required
         />
         <button 
         className={InputBoxStyles.item2}

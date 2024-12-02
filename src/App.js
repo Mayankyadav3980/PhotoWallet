@@ -1,14 +1,18 @@
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
-import InputBox from './components/InputBox/InputBox';
-import AlbumList from './components/AlbumList/AlbumList';
+import AlbumsPage from './components/AlbumsPage';
+import PhotosPage from './components/PhotosPage'
+// import InputBox from './components/InputBox/InputBox';
+// import AlbumList from './components/AlbumList/AlbumList';
 
 function App() {
   return (
     <div className="app">
       <Navbar/>
-      <InputBox/>
-      <AlbumList/>
+      {/* <AlbumsPage/> */}
+      <PhotosPage/>
+      {/* <InputBox/>
+      <AlbumList/> */}
     </div>
   );
 }
