@@ -4,11 +4,12 @@ import { db } from "../../firebaseInit";
 import { onSnapshot, collection, orderBy } from "firebase/firestore";
 import  Card  from '../Card/Card'
 import AlbumForm from "../AlbumForm/AlbumForm";
+import ImageList from "../ImageList/ImageList";
 
 const AlbumList = () => {
     const [albumList, setAlbumList] = useState([]);
     const [showForm, setShowForm] = useState(false);
-    const [openAlbum, setOpenAlbum] = useState({albumId:"", open:true})
+    const [openAlbum, setOpenAlbum] = useState({albumId:"", open:false})
 
     useEffect(()=>{
       const unsub = onSnapshot(collection(db, "albums"), orderBy("date", "desc"), (snapShot)=>{
@@ -55,8 +56,8 @@ const AlbumList = () => {
           </>
         ) : (
           <>
-            {/* <ImageList openAlbum={openAlbum} setOpenAlbum={setOpenAlbum} /> */}
-            <div>il</div>
+            <ImageList openAlbum={openAlbum} setOpenAlbum={setOpenAlbum} />
+            {/* <div>il</div> */}
           </>
         )}
       </div>
