@@ -9,8 +9,8 @@ function App() {
   return (
     <div className="app">
       <Navbar/>
-      {/* <AlbumsPage/> */}
-      <PhotosPage/>
+      <AlbumsPage/>
+      {/* <PhotosPage/> */}
       {/* <InputBox/>
       <AlbumList/> */}
     </div>

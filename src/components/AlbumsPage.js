@@ -1,14 +1,14 @@
 import React from 'react'
 import AlbumList from './AlbumList/AlbumList'
-import InputBox from './InputBox/InputBox'
+import AlbumForm from './AlbumForm/AlbumForm'
 
 const AlbumsPage = () => {
   return (
     <div>
-        <InputBox/>
-        <AlbumList/>
+      {/* <AlbumForm /> */}
+      <AlbumList />
     </div>
-  )
+  );
 }
 
 export default AlbumsPage
