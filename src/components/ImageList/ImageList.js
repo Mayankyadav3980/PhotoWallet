@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import ImageForm from '../ImageForm/ImageForm'
 import styles from './ImageList.module.css'
-import { onSnapshot } from 'firebase/firestore'
+import { db } from '../../firebaseInit'
+import { onSnapshot, doc } from 'firebase/firestore'
+import ImageCard from '../ImageCard/ImageCard'
 
 const ImageList = ({openAlbum, setOpenAlbum}) => {
   const [photoList, setPhotoList] = useState([]);
@@ -24,7 +26,9 @@ const ImageList = ({openAlbum, setOpenAlbum}) => {
       <div className={styles.container}>
         <h2 className={styles.heading}>Your Images</h2>
         <div className={styles.image_list}>
-          <div>1st img</div>
+          <ImageCard imgObj={{title:'t', url:'u'}}
+
+          />
         </div>
       </div>
     </>

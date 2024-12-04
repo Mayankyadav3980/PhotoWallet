@@ -9,7 +9,10 @@ import ImageList from "../ImageList/ImageList";
 const AlbumList = () => {
     const [albumList, setAlbumList] = useState([]);
     const [showForm, setShowForm] = useState(false);
-    const [openAlbum, setOpenAlbum] = useState({albumId:"", open:false})
+    const [openAlbum, setOpenAlbum] = useState({
+      albumId: "5FTASPJYo4JkgjZharZG",
+      open: true,
+    });
 
     useEffect(()=>{
       const unsub = onSnapshot(collection(db, "albums"), (snapShot)=>{

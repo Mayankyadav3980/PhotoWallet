@@ -1,0 +1,33 @@
+.img_card {
+  /* color: white; */
+
+  width: 150px;
+  height: fit-content;
+  border: 2px solid white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1rem;
+  cursor: pointer;
+  margin: 20px;
+}
+
+.img_card:hover{
+    border: 2px solid rgb(171, 165, 165);
+}
+
+.img_box{
+    
+    /* width: 90%;
+  height: 100px;
+  margin: 5px; */
+  /* color: white; */
+  border: 1px solid cyan;
+   padding-bottom: 1rem;
+   margin-bottom: 0.5rem;
+}
+
+.img_title{
+    color: white;
+}

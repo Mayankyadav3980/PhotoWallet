@@ -12,7 +12,7 @@ const AlbumForm = () => {
     try {
       await addDoc(collection(db, "albums"), {
         albumName: albumName,
-        photoList: [],
+        photoList: [{title:'this is title', url:'this is url'}],
       });
       setAlbumName("");
       //  alert("new album created!!");
