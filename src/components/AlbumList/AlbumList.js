@@ -12,7 +12,7 @@ const AlbumList = () => {
     const [openAlbum, setOpenAlbum] = useState({albumId:"", open:false})
 
     useEffect(()=>{
-      const unsub = onSnapshot(collection(db, "albums"), orderBy("date", "desc"), (snapShot)=>{
+      const unsub = onSnapshot(collection(db, "albums"), (snapShot)=>{
         const list = snapShot.docs.map(doc => {
           return {
             id:doc.id,
@@ -23,6 +23,7 @@ const AlbumList = () => {
       })
 
     },[])
+
     return (
       <div className={styles.main_container}>
         {!openAlbum.open ? (
@@ -42,9 +43,6 @@ const AlbumList = () => {
             <div className={styles.container}>
               <h2 className={styles.heading}>Your Albums</h2>
               <div className={styles.album_list}>
-                {/* display all album  list below */}
-                {/* <div className={styles.album}>album1</div> */}
-                {/* <Card/> */}
 
                 {albumList.map((album, idx) => {
                   return (
@@ -54,12 +52,8 @@ const AlbumList = () => {
               </div>
             </div>
           </>
-        ) : (
-          <>
-            <ImageList openAlbum={openAlbum} setOpenAlbum={setOpenAlbum} />
-            {/* <div>il</div> */}
-          </>
-        )}
+        ) : (<ImageList openAlbum={openAlbum} setOpenAlbum={setOpenAlbum} />)
+        }
       </div>
     );
 }
