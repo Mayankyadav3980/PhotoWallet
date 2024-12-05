@@ -40,7 +40,11 @@ const ImageList = ({openAlbum, setOpenAlbum}) => {
         <h2 className={styles.heading}>Your Images</h2>
         <div className={styles.image_list}>
           {photoList.map((imgDataObj, idx) => {
-            return <ImageCard key={idx} imgDataObj={imgDataObj} />;
+            return <ImageCard 
+                    key={idx} 
+                    imgDataObj={imgDataObj}
+                    albumId = {openAlbum.albumId}
+                    />;
           })}
         </div>
       </div>
