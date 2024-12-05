@@ -10,7 +10,8 @@ const AlbumList = () => {
     const [albumList, setAlbumList] = useState([]);
     const [showForm, setShowForm] = useState(false);
     const [openAlbum, setOpenAlbum] = useState({
-      albumId: "5FTASPJYo4JkgjZharZG",
+      // albumId: "5FTASPJYo4JkgjZharZG",
+      albumId: "6eXkPuY09N1Sjg9CsKFT",
       open: true,
     });
 

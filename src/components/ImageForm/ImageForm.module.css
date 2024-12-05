@@ -3,7 +3,7 @@
     height: fit-content;
     background-color: black;
     margin: auto;
-    margin-top: 100px;
+    margin-top: 30px;
     padding: 10px 20px;
     /* border: 1px solid red; */
     border-radius: 15px;
@@ -22,6 +22,7 @@
     align-items: center;
     /* height: fit-content; */
     /* justify-content: space-between; */
+    /* border: 1px solid red; */
 }
 
 .input_field{
@@ -30,7 +31,7 @@
     height: 30px;
     padding: 10px;
     border-radius: 5px;
-     margin: 5px 8px 5px 0;
+     margin: 5px 10px 5px 0;
     /* background-color: red; */
 }
 
@@ -38,7 +39,7 @@
     /* flex-grow: 1; */
     /* margin-left: 30px; */
     margin: auto;
-    margin-top: 5px;
+    margin-top: 15px;
     width: 15%;
     border-radius: 5px;
     font-size: 1rem;
