@@ -10,14 +10,12 @@ import { ImCross } from "react-icons/im";;
 const ImageList = ({openAlbum, setOpenAlbum}) => {
   const [photoList, setPhotoList] = useState([]);
   const [showForm, setShowForm] = useState(false);
+  const [updateImg, setUpdateImg] = useState(false);
 
   useEffect(()=>{
     const unsub = onSnapshot(doc(db, 'albums',openAlbum.albumId), (doc) => {
       const data = doc.data().photoList;
-      setPhotoList(data);
-      // console.log(typeof(data));
-      // console.log(data);
-      
+      setPhotoList(data);      
     })
   },[])
 
@@ -35,15 +33,19 @@ const ImageList = ({openAlbum, setOpenAlbum}) => {
         </button>
       </div>
 
-      {showForm && <ImageForm list={photoList} openAlbum={openAlbum}/>}
+      {showForm && <ImageForm list={photoList} openAlbum={openAlbum} updateImg={updateImg}/>}
       <div className={styles.container}>
         <h2 className={styles.heading}>Your Images</h2>
         <div className={styles.image_list}>
           {photoList.map((imgDataObj, idx) => {
             return <ImageCard 
                     key={idx} 
+                    id={idx}
                     imgDataObj={imgDataObj}
                     albumId = {openAlbum.albumId}
+                    photoList={photoList}
+                    setUpdateImg = {setUpdateImg}
+                    setShowForm={setShowForm}
                     />;
           })}
         </div>

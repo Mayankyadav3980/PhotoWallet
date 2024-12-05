@@ -2,25 +2,34 @@ import React, { useState } from 'react'
 import styles from './ImageCard.module.css'
 import { MdDelete } from "react-icons/md";
 import { GrUpdate } from "react-icons/gr";
+import { db } from '../../firebaseInit';
+import { updateDoc, doc } from 'firebase/firestore';
 
 
-const ImageCard = ({imgDataObj}) => {
+const ImageCard = ({
+  id,
+  imgDataObj,
+  albumId,
+  photoList,
+  setUpdateImg,
+  setShowForm,
+}) => {
   const [showOptions, setShowOptions] = useState(false);
 
-  const handleMouse = () => {
-    // console.log('handle mouse triggered');
-    
-     setShowOptions(!showOptions);
-  }
+  const updateImage = () => {
+    setUpdateImg((pv) => !pv);
+    setShowForm(true);
+  };
 
-  const handleLeave = () => {
-    setShowOptions(!showOptions);
-  }
+  const deleteImage = async () => {
+    const newPhotoList = photoList.filter((obj, idx) => idx != id);
+    await updateDoc(doc(db, "albums", albumId), { photoList: newPhotoList });
+  };
   return (
     <div
       className={styles.img_card}
-      onMouseEnter={handleMouse}
-      onMouseLeave={handleLeave}
+      onMouseEnter={() => setShowOptions(!showOptions)}
+      onMouseLeave={() => setShowOptions(!showOptions)}
     >
       <div className={styles.img_box}>
         <img
@@ -29,25 +38,25 @@ const ImageCard = ({imgDataObj}) => {
           style={{ width: "100%", height: "100%" }}
         />
       </div>
-      {/* <h3 className={styles.img_title}>{imgDataObj.title}</h3> */}
-
-      {/*on delete & update btn */}
 
       <div className={styles.option_container}>
         {showOptions && (
-          <button className={`${styles.btn} ${styles.del}`}>
+          <button
+            className={`${styles.btn} ${styles.del}`}
+            onClick={updateImage}
+          >
             <GrUpdate />
           </button>
         )}
         <h3 className={styles.img_title}>{imgDataObj.title}</h3>
         {showOptions && (
-          <button className={styles.btn}>
+          <button className={styles.btn} onClick={deleteImage}>
             <MdDelete />
           </button>
         )}
       </div>
     </div>
   );
-}
+};
 
 export default ImageCard

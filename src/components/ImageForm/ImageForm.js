@@ -3,7 +3,7 @@ import styles from './ImageForm.module.css'
 import { db } from '../../firebaseInit';
 import { updateDoc, doc } from 'firebase/firestore';
 
-const ImageForm = ({list, openAlbum}) => {
+const ImageForm = ({list, openAlbum, updateImg}) => {
    const [imageDetail, setImageDetail] = useState({
     title:"",
     url: ""
@@ -40,7 +40,9 @@ const ImageForm = ({list, openAlbum}) => {
 
    return (
      <div className={styles.container}>
-       <h3 className={styles.heading}>Add image to {}</h3>
+       <h3 className={styles.heading}>
+         {updateImg ? "Update Image" : "Add new image"}
+       </h3>
        <form onSubmit={handleSubmit}>
          <div className={styles.container1}>
            <input
@@ -61,7 +63,7 @@ const ImageForm = ({list, openAlbum}) => {
            />
          </div>
          <button className={styles.btn}>
-           Add
+           {updateImg ? "Update" : "Add"}
          </button>
        </form>
      </div>
