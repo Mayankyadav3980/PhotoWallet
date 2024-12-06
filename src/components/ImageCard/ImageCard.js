@@ -14,6 +14,8 @@ const ImageCard = ({
   updateImg,
   setUpdateImg,
   setShowForm,
+  showModal,
+  setShowModal,
 }) => {
   const [showOptions, setShowOptions] = useState(false);
 
@@ -38,7 +40,7 @@ const ImageCard = ({
       onMouseEnter={() => setShowOptions(!showOptions)}
       onMouseLeave={() => setShowOptions(!showOptions)}
     >
-      <div className={styles.img_box}>
+      <div className={styles.img_box} onClick={()=>setShowModal({state:true, idx:id})}>
         <img
           src={imgDataObj.url}
           alt=""
