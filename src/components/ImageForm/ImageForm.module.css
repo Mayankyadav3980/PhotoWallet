@@ -34,12 +34,16 @@
      margin: 5px 10px 5px 0;
     /* background-color: red; */
 }
+.btn_container{
+    display: flex;
+    justify-content: center;
+}
 
 .btn{
     /* flex-grow: 1; */
     /* margin-left: 30px; */
-    margin: auto;
-    margin-top: 15px;
+    /* margin: auto; */
+    margin: 15px;
     width: 15%;
     border-radius: 5px;
     font-size: 1rem;

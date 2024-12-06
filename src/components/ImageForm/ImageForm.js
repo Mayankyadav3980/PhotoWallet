@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import styles from './ImageForm.module.css'
 import { db } from '../../firebaseInit';
 import { updateDoc, doc } from 'firebase/firestore';
@@ -9,22 +9,29 @@ const ImageForm = ({list, openAlbum, updateImg}) => {
     url: ""
    });
 
+   useEffect(()=>{
+      if(updateImg.state){
+        setImageDetail({title:updateImg.title, url:updateImg.url});
+      }
+   },[updateImg])
+
    const handleSubmit = async (e) => {
     e.preventDefault();
-    await updateDoc(doc(db, "albums", openAlbum.albumId),{ photoList: [...list, imageDetail]});
-    setImageDetail({ title: "", url: "" });
-    
-    //  try {
-    //    await addDoc(collection(db, "albums"), {
-    //      albumName: albumName,
-    //      photoList: [],
-    //      date: new Date(),
-    //    });
-    //    setAlbumName("");
-    //    //  alert("new album created!!");
-    //  } catch (e) {
-    //    console.log("error is: " + e);
-    //  }
+
+    if(updateImg.state){
+       const newList = list.map((obj,idx)=>{
+        if(idx===updateImg.idx) return imageDetail;
+        else return obj;
+       });
+       await updateDoc(doc(db, "albums", openAlbum.albumId), {
+         photoList: newList,
+       });
+    }else{
+       await updateDoc(doc(db, "albums", openAlbum.albumId), {
+         photoList: [imageDetail, ...list],
+       });
+       setImageDetail({ title: "", url: "" });
+    }
    };
 
    const handleChange = (e) => {
@@ -41,7 +48,7 @@ const ImageForm = ({list, openAlbum, updateImg}) => {
    return (
      <div className={styles.container}>
        <h3 className={styles.heading}>
-         {updateImg ? "Update Image" : "Add new image"}
+         {updateImg.state ? "Update Image" : "Add new image"}
        </h3>
        <form onSubmit={handleSubmit}>
          <div className={styles.container1}>
@@ -62,9 +69,12 @@ const ImageForm = ({list, openAlbum, updateImg}) => {
              required
            />
          </div>
-         <button className={styles.btn}>
-           {updateImg ? "Update" : "Add"}
-         </button>
+         <div className={styles.btn_container}>
+           <button className={styles.btn}>
+             {updateImg.state ? "Update" : "Add"}
+           </button>
+           <button className={styles.btn} onClick={()=>setImageDetail({ title: "", url: "" })}>Clear</button>
+         </div>
        </form>
      </div>
    );

@@ -11,13 +11,20 @@ const ImageCard = ({
   imgDataObj,
   albumId,
   photoList,
+  updateImg,
   setUpdateImg,
   setShowForm,
 }) => {
   const [showOptions, setShowOptions] = useState(false);
 
   const updateImage = () => {
-    setUpdateImg((pv) => !pv);
+    setUpdateImg({
+      idx: id,
+      title: imgDataObj.title,
+      url: imgDataObj.url,
+      state: true,
+    });
+    // setUpdateImg((pv) => !pv);
     setShowForm(true);
   };
 

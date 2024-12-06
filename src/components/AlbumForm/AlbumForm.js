@@ -12,7 +12,7 @@ const AlbumForm = () => {
     try {
       await addDoc(collection(db, "albums"), {
         albumName: albumName,
-        photoList: [{title:'this is title', url:'this is url'}],
+        photoList: [],
       });
       setAlbumName("");
       //  alert("new album created!!");
@@ -34,6 +34,7 @@ const AlbumForm = () => {
             required
           />
           <button className={AlbumFormStyles.sbt_btn}>Create</button>
+          <button className={AlbumFormStyles.sbt_btn} onClick={()=>setAlbumName('')}>Clear</button>
         </form>
       </div>
     </div>

@@ -28,7 +28,7 @@ form{
 }
 .input_field{
     /* flex-grow: 1; */
-    width: 70%;
+    width: 60%;
     height: 30px;
     padding: 10px;
     border-radius: 5px;
