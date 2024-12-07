@@ -11,11 +11,10 @@ const ImageCard = ({
   imgDataObj,
   albumId,
   photoList,
-  updateImg,
   setUpdateImg,
   setShowForm,
-  showModal,
   setShowModal,
+  setCurrent
 }) => {
   const [showOptions, setShowOptions] = useState(false);
 
@@ -26,10 +25,10 @@ const ImageCard = ({
       url: imgDataObj.url,
       state: true,
     });
-    // setUpdateImg((pv) => !pv);
     setShowForm(true);
   };
 
+  // can've a look at it and move it to ImageList, can just pass del img function ref
   const deleteImage = async () => {
     const newPhotoList = photoList.filter((obj, idx) => idx != id);
     await updateDoc(doc(db, "albums", albumId), { photoList: newPhotoList });
@@ -40,7 +39,7 @@ const ImageCard = ({
       onMouseEnter={() => setShowOptions(!showOptions)}
       onMouseLeave={() => setShowOptions(!showOptions)}
     >
-      <div className={styles.img_box} onClick={()=>setShowModal({state:true, idx:id})}>
+      <div className={styles.img_box} onClick={()=>{setShowModal({state:true, idx:id});setCurrent(id)}}>
         <img
           src={imgDataObj.url}
           alt=""

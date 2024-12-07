@@ -16,18 +16,16 @@ const ImageList = ({openAlbum, setOpenAlbum}) => {
   const [photoList, setPhotoList] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [updateImg, setUpdateImg] = useState({state:false, idx:'', title:'',url:''});
-  const [showModal, setShowModal] = useState({state:false, id:0});
+  const [showModal, setShowModal] = useState({state: false, idx:0});
   const [current, setCurrent] = useState(0);
   let lenght = photoList.length;
 
   const prevImg = () => {
     setCurrent(current == 0 ? lenght - 1 : current - 1);
-    console.log(current);
   };
 
   const nextImg = () => {
     setCurrent(current == lenght - 1 ? 0 : current + 1);
-    console.log(current);
   };
 
   useEffect(()=>{
@@ -80,11 +78,10 @@ const ImageList = ({openAlbum, setOpenAlbum}) => {
                 imgDataObj={imgDataObj}
                 albumId={openAlbum.albumId}
                 photoList={photoList}
-                updateImg={updateImg}
                 setUpdateImg={setUpdateImg}
                 setShowForm={setShowForm}
-                showModal={showModal}
                 setShowModal={setShowModal}
+                setCurrent={setCurrent}
               />
             );
           })}
@@ -93,22 +90,27 @@ const ImageList = ({openAlbum, setOpenAlbum}) => {
 
       {/* modal */}
       {showModal.state && (
-        <div className="carousel_container">
+        <div className={styles.carousel_container} >
+          
+          <ImCross 
+          className={styles.cls_btn}
+          onClick={()=>setShowModal({...showModal,state:false})}
+          />
           <FaArrowAltCircleLeft
-            className="left-arrow arrow"
+            className={`${styles.left_arrow} ${styles.arrow}`}
             onClick={prevImg}
           />
           <FaArrowAltCircleRight
-            className="right-arrow arrow"
+            className={`${styles.right_arrow} ${styles.arrow}`}
             onClick={nextImg}
           />
-          <div className="modal">
+          <div className={styles.modal}>
             {photoList.map((obj, idx) => {
               if (current == idx)
                 return (
                   <img
                     key={idx}
-                    className="carousel_image"
+                    className={styles.carousel_image}
                     src={obj.url}
                     alt="img"
                   />
