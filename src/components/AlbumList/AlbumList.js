@@ -6,6 +6,9 @@ import  Card  from '../Card/Card'
 import AlbumForm from "../AlbumForm/AlbumForm";
 import ImageList from "../ImageList/ImageList";
 import Spinner from "react-spinner-material";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const AlbumList = () => {
     const [albumList, setAlbumList] = useState([]);
@@ -39,6 +42,7 @@ const AlbumList = () => {
           </div>
         ) : (
           <div className={styles.main_container}>
+            <ToastContainer autoClose={4000} theme='dark' />
             {!openAlbum.open ? (
               <>
                 {!showForm && (

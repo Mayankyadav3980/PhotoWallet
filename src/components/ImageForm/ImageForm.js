@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import styles from './ImageForm.module.css'
 import { db } from '../../firebaseInit';
 import { updateDoc, doc } from 'firebase/firestore';
+import { toast } from "react-toastify";
 
 const ImageForm = ({list, openAlbum, updateImg}) => {
    const [imageDetail, setImageDetail] = useState({
@@ -26,11 +27,13 @@ const ImageForm = ({list, openAlbum, updateImg}) => {
        await updateDoc(doc(db, "albums", openAlbum.albumId), {
          photoList: newList,
        });
+       toast.success('Image updated successfully')
     }else{
        await updateDoc(doc(db, "albums", openAlbum.albumId), {
          photoList: [imageDetail, ...list],
        });
        setImageDetail({ title: "", url: "" });
+       toast.success("Image added successfully");
     }
    };
 

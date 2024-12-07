@@ -4,6 +4,7 @@ import { MdDelete } from "react-icons/md";
 import { GrUpdate } from "react-icons/gr";
 import { db } from '../../firebaseInit';
 import { updateDoc, doc } from 'firebase/firestore';
+import { toast } from 'react-toastify';
 
 
 const ImageCard = ({
@@ -32,6 +33,7 @@ const ImageCard = ({
   const deleteImage = async () => {
     const newPhotoList = photoList.filter((obj, idx) => idx != id);
     await updateDoc(doc(db, "albums", albumId), { photoList: newPhotoList });
+    toast.success('Image deleted successfully');
   };
   return (
     <div

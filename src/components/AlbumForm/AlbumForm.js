@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import AlbumFormStyles from "./AlbumForm.module.css";
 import { db } from '../../firebaseInit'
 import { addDoc, collection } from 'firebase/firestore'
-
+import { toast } from 'react-toastify';
 
 const AlbumForm = () => {
   const [albumName, setAlbumName] = useState("");
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,7 +16,7 @@ const AlbumForm = () => {
         photoList: [],
       });
       setAlbumName("");
-      //  alert("new album created!!");
+      toast.success("Album created successfully");
     } catch (e) {
       console.log("error is: " + e);
     }
