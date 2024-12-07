@@ -7,12 +7,10 @@
   flex-direction: column;
   align-items: center;
   padding: 0.5rem 0;
-  cursor: pointer;
   margin: 20px;
 }
 
 .card_container:hover {
-  /* color: rgb(197, 21, 21); */
   border: 2px solid rgb(171, 165, 165);
 }
 
@@ -21,11 +19,27 @@
   height: 100px;
   margin: 5px;
   color: white;
+  cursor: pointer;
   /* border: 1px solid cyan; */
 }
 
 .card_heading {
   color: white;
-  /* color: black; */
-  /* background-color: white; */
+}
+
+.cont2 {
+  /* border: 1px solid white; */
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.del_btn {
+  color: white;
+  background-color: black;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.del_btn:hover {
+  color: rgb(207, 51, 51);
 }

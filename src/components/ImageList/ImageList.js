@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import ImageForm from '../ImageForm/ImageForm'
-import styles from './ImageList.module.css'
-import { db } from '../../firebaseInit'
-import { onSnapshot, doc } from 'firebase/firestore'
-import ImageCard from '../ImageCard/ImageCard'
+import React, { useEffect, useState } from "react";
+import ImageForm from "../ImageForm/ImageForm";
+import styles from "./ImageList.module.css";
+import { db } from "../../firebaseInit";
+import { onSnapshot, doc } from "firebase/firestore";
+import ImageCard from "../ImageCard/ImageCard";
 import {
   FaArrowLeft,
   FaPlus,
@@ -12,28 +12,36 @@ import {
 } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 
-const ImageList = ({openAlbum, setOpenAlbum}) => {
+const ImageList = ({ openAlbum, setOpenAlbum }) => {
   const [photoList, setPhotoList] = useState([]);
   const [showForm, setShowForm] = useState(false);
-  const [updateImg, setUpdateImg] = useState({state:false, idx:'', title:'',url:''});
-  const [showModal, setShowModal] = useState({state: false, idx:0});
+  const [updateImg, setUpdateImg] = useState({
+    state: false,
+    idx: "",
+    title: "",
+    url: "",
+  });
+  const [showModal, setShowModal] = useState({ state: false, idx: 0 });
   const [current, setCurrent] = useState(0);
   let lenght = photoList.length;
 
+  //to navigate to previous image in carousel
   const prevImg = () => {
-    setCurrent(current == 0 ? lenght - 1 : current - 1);
+    setCurrent(current === 0 ? lenght - 1 : current - 1);
   };
 
+  //to navigate to next image in carousel
   const nextImg = () => {
-    setCurrent(current == lenght - 1 ? 0 : current + 1);
+    setCurrent(current === lenght - 1 ? 0 : current + 1);
   };
 
-  useEffect(()=>{
-    const unsub = onSnapshot(doc(db, 'albums',openAlbum.albumId), (doc) => {
+  // It fetches the photolist array for the selected album
+  useEffect(() => {
+    onSnapshot(doc(db, "albums", openAlbum.albumId), (doc) => {
       const data = doc.data().photoList;
-      setPhotoList(data);      
-    })
-  },[])
+      setPhotoList(data);
+    });
+  }, [openAlbum.albumId]);
 
   return (
     <>
@@ -55,6 +63,7 @@ const ImageList = ({openAlbum, setOpenAlbum}) => {
         </button>
       </div>
 
+      {/* show Image form only when showForm  is set to true  */}
       {showForm && (
         <ImageForm
           list={photoList}
@@ -63,9 +72,10 @@ const ImageList = ({openAlbum, setOpenAlbum}) => {
         />
       )}
 
+      {/* conditionally rendering, message and images in collection */}
       <div className={styles.container}>
         {photoList.length === 0 ? (
-          <h2 className={styles.heading}>Oops! no images in your collection</h2>
+          <h2 className={styles.heading}>No images in your collection</h2>
         ) : (
           <h2 className={styles.heading}>Your collection</h2>
         )}
@@ -90,11 +100,10 @@ const ImageList = ({openAlbum, setOpenAlbum}) => {
 
       {/* modal */}
       {showModal.state && (
-        <div className={styles.carousel_container} >
-          
-          <ImCross 
-          className={styles.cls_btn}
-          onClick={()=>setShowModal({...showModal,state:false})}
+        <div className={styles.carousel_container}>
+          <ImCross
+            className={styles.cls_btn}
+            onClick={() => setShowModal({ ...showModal, state: false })}
           />
           <FaArrowAltCircleLeft
             className={`${styles.left_arrow} ${styles.arrow}`}
@@ -106,7 +115,7 @@ const ImageList = ({openAlbum, setOpenAlbum}) => {
           />
           <div className={styles.modal}>
             {photoList.map((obj, idx) => {
-              if (current == idx)
+              if (current === idx)
                 return (
                   <img
                     key={idx}
@@ -115,12 +124,14 @@ const ImageList = ({openAlbum, setOpenAlbum}) => {
                     alt="img"
                   />
                 );
+
+                return null;
             })}
           </div>
         </div>
       )}
     </>
   );
-}
+};
 
-export default ImageList
+export default ImageList;

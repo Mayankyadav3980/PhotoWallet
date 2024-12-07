@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import AlbumFormStyles from "./AlbumForm.module.css";
-import { db } from '../../firebaseInit'
-import { addDoc, collection } from 'firebase/firestore'
-import { toast } from 'react-toastify';
+import { db } from "../../firebaseInit";
+import { addDoc, collection } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 const AlbumForm = () => {
   const [albumName, setAlbumName] = useState("");
-  
 
+  //function to add new album to database
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -35,7 +35,12 @@ const AlbumForm = () => {
             required
           />
           <button className={AlbumFormStyles.sbt_btn}>Create</button>
-          <button className={AlbumFormStyles.sbt_btn} onClick={()=>setAlbumName('')}>Clear</button>
+          <button
+            className={AlbumFormStyles.sbt_btn}
+            onClick={() => setAlbumName("")}
+          >
+            Clear
+          </button>
         </form>
       </div>
     </div>

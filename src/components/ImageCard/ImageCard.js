@@ -1,11 +1,9 @@
-import React, { useState } from 'react'
-import styles from './ImageCard.module.css'
-import { MdDelete } from "react-icons/md";
-import { GrUpdate } from "react-icons/gr";
-import { db } from '../../firebaseInit';
-import { updateDoc, doc } from 'firebase/firestore';
-import { toast } from 'react-toastify';
-
+import React, { useState } from "react";
+import styles from "./ImageCard.module.css";
+import { MdDelete, MdModeEdit } from "react-icons/md";
+import { db } from "../../firebaseInit";
+import { updateDoc, doc } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 const ImageCard = ({
   id,
@@ -15,10 +13,11 @@ const ImageCard = ({
   setUpdateImg,
   setShowForm,
   setShowModal,
-  setCurrent
+  setCurrent,
 }) => {
   const [showOptions, setShowOptions] = useState(false);
 
+  //getting the details of image clicked, and updating up updateImage hook.
   const updateImage = () => {
     setUpdateImg({
       idx: id,
@@ -29,11 +28,11 @@ const ImageCard = ({
     setShowForm(true);
   };
 
-  // can've a look at it and move it to ImageList, can just pass del img function ref
+  //function to delete the image from list in firestore
   const deleteImage = async () => {
-    const newPhotoList = photoList.filter((obj, idx) => idx != id);
+    const newPhotoList = photoList.filter((obj, idx) => idx !== id);
     await updateDoc(doc(db, "albums", albumId), { photoList: newPhotoList });
-    toast.success('Image deleted successfully');
+    toast.success("Image deleted successfully");
   };
   return (
     <div
@@ -41,7 +40,13 @@ const ImageCard = ({
       onMouseEnter={() => setShowOptions(!showOptions)}
       onMouseLeave={() => setShowOptions(!showOptions)}
     >
-      <div className={styles.img_box} onClick={()=>{setShowModal({state:true, idx:id});setCurrent(id)}}>
+      <div
+        className={styles.img_box}
+        onClick={() => {
+          setShowModal({ state: true, idx: id });
+          setCurrent(id);
+        }}
+      >
         <img
           src={imgDataObj.url}
           alt=""
@@ -55,7 +60,7 @@ const ImageCard = ({
             className={`${styles.btn} ${styles.del}`}
             onClick={updateImage}
           >
-            <GrUpdate />
+            <MdModeEdit />
           </button>
         )}
         <h3 className={styles.img_title}>{imgDataObj.title}</h3>
@@ -69,4 +74,4 @@ const ImageCard = ({
   );
 };
 
-export default ImageCard
+export default ImageCard;
