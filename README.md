@@ -1,71 +1,64 @@
-# Getting Started with Create React App
+# PhotoWallet
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+PhotoWallet is a web application built using **React.js** and **Firebase Cloud Firestore** that allows users to manage their photo collections efficiently. The application is hosted using **GitHub Pages**.
 
-## Available Scripts
+## 🚀 Features
 
-In the project directory, you can run:
+- **Create & Delete Collections** – Users can create multiple photo collections and remove them when no longer needed.
+- **Add, Delete & Update Photos** – Users can manage multiple photos within each collection.
+- **Firebase Cloud Firestore** – Used for storing and managing data in real time.
+- **Hosted on GitHub Pages** – Easily accessible and deployed for users.
 
-### `npm start`
+## 🛠️ Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **React.js** – Frontend library for building the user interface.
+- **Firebase Cloud Firestore** – NoSQL database for storing collections and photos.
+- **GitHub Pages** – For hosting the application.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🚀 Getting Started
 
-### `npm test`
+### 1️⃣ Clone the Repository
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```sh
+git clone https://github.com/Mayankyadav3980/PhotoWallet.git
+cd PhotoWallet
+```
 
-### `npm run build`
+### 2️⃣ Install Dependencies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```sh
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 3️⃣ Set Up Firebase
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Create a Firebase project in the [Firebase Console](https://console.firebase.google.com/).
+- Enable **Cloud Firestore**.
+- Obtain the Firebase config object and update it in the project.
 
-### `npm run eject`
+### 4️⃣ Run the Application
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```sh
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The app will run on `http://localhost:3000/`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 📦 Deployment
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+This project is hosted on **GitHub Pages**. To deploy the latest version:
 
-## Learn More
+```sh
+npm run deploy
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 📸 Screenshots
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+### 🎯 Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Feel free to open issues and submit pull requests if you’d like to improve the app! 😊
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# PhotoWallet ReadmeFile
